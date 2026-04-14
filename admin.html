@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h4 class="text-center mb-4">لوحة التحكم</h4>
+
+    <nav class="nav flex-column px-3">
+        <span class="nav-link active" data-page="dashboard">Dashboard</span>
+        <span class="nav-link" data-page="users">المستخدمين</span>
+        <span class="nav-link" data-page="orders">الطلبات</span>
+        <span class="nav-link" data-page="bills">الفواتير</span>
+        <span class="nav-link" data-page="complaints">الشكاوى</span>
+        <span class="nav-link" data-page="ads">الإعلانات</span>
+        <span class="nav-link" data-page="appointments">المواعيد</span>
+        <span class="nav-link" data-page="admins">الاعدادات</span>
+    </nav>
+</div>
+
+<!-- Main content -->
+<div class="content">
+
+    <!-- Topbar -->
+    <div class="topbar mb-3">
+
+        <div class="d-flex align-items-center w-100 justify-content-between">
+            <!-- Search in the middle -->
+            <input type="text" class="form-control w-40 mx-auto" placeholder="ابحث...">
+
+            <!-- Admin Info -->
+            <div class="admin-info d-flex align-items-center">
+            <img src="assets/img/woman2.jpeg" alt="admin" class="admin-img me-2">
+                <div>
+                    <div class="fw-bold">بلسم مشاقي</div>
+                    <span class="text-muted" style="font-size: 13px;">Super Admin</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard" class="page active">
+        <div class="row g-3">
+
+            <!-- الفواتير -->
+            <div class="col-md-3">
+                <div class="card-box card-blue d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="card-number" id="billsCount"></div>
+                        <div class="card-title">عدد الفواتير</div>
+                    </div>
+                    <i class="bi bi-receipt-cutoff card-icon"></i>
+                </div>
+            </div>
+
+            <!-- المستخدمين -->
+            <div class="col-md-3">
+                <div class="card-box card-green d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="card-number" id="usersCount"></div>
+                        <div class="card-title">عدد المستخدمين</div>
+                    </div>
+                    <i class="bi bi-people card-icon"></i>
+                </div>
+            </div>
+
+
+
+            <!-- الطلبات -->
+            <div class="col-md-3">
+                <div class="card-box card-yellow d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="card-number" id="ordersCount"></div>
+                        <div class="card-title">عدد الطلبات</div>
+                    </div>
+                    <i class="bi bi-cart-check card-icon"></i>
+                </div>
+            </div>
+
+            <!-- المواعيد -->
+            <div class="col-md-3">
+                <div class="card-box card-turquoise d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="card-number" id="appointmentsCount"></div>
+                        <div class="card-title">عدد المواعيد</div>
+                    </div>
+                    <i class="bi bi-calendar-check card-icon"></i>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <!-- ===== Charts + Table Layout ===== -->
+            <div class="row mt-4">
+
+                <!-- الجدول (ثلثين الشاشة) -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            آخر الإعلانات
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table table-striped mb-0 table-wide">
+                                <thead>
+                                <tr>
+                                    <th>رقم الإعلان</th>
+                                    <th>عنوان الإعلان</th>
+                                    <th>تاريخ النشر</th>
+                                </tr>
+                                </thead>
+                                <tbody id="latest-ads">
+                                <!-- البيانات -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التشارتات (ثلث الشاشة) -->
+                <div class="col-md-3 d-flex flex-column gap-3">
+
+                    <div class="card chart-card p-3">
+                        <h6 class="mb-2 text-center">نسبة الطلبات إلى المستخدمين</h6>
+                        <div class="chart-wrapper">
+                            <canvas id="ordersUsersChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card p-3">
+                        <h6 class="mb-2 text-center">نسبة الفواتير إلى المستخدمين</h6>
+                        <div class="chart-wrapper">
+                            <canvas id="billsUsersChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+            </div>
+
+        </div>
+
+
+    <!-- Users Page -->
+    <div id="users" class="page">
+        <h3>صفحة المستخدمين</h3>
+    </div>
+
+    <!-- Orders Page -->
+    <div id="orders" class="page">
+        <h3>صفحة الطلبات</h3>
+    </div>
+
+    <div id="bills" class="page">
+        <h3>صفحة الفواتير</h3>
+    </div>
+
+    <div id="complaints" class="page">
+        <h3>صفحة الشكاوى</h3>
+    </div>
+
+    <!-- Ads Page -->
+    <div id="announcements" class="page">
+        <h3>صفحة الإعلانات</h3>
+    </div>
+
+    <!-- Appointments Page -->
+    <div id="appointments" class="page">
+        <h3>صفحة المواعيد</h3>
+    </div>
+
+    <!-- Admin Settings -->
+    <div id="admins" class="page">
+        <h3>الاعدادات</h3>
+    </div>
+
+</div>
+
+<!-- JS file -->
+<script src="js/script.js"></script>
+<script src="js/billscript.js"></script>
+<script src="js/orderscript.js"></script>
+<script src="js/complaintscript.js"></script>
+<script src="js/appointmentscript.js"></script>
+<script src="js/announcementscript.js"></script>
+<script src="js/admin_settings.js"></script>
+<script src="js/dashboardscript.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</body>
+</html>

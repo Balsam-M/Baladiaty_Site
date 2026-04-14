@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إعدادات المستخدم</title>
+    <link rel="stylesheet" href="css/profile.css" />
+    <script>
+        function showSection(section) {
+            document.getElementById('personal').style.display = section === 'personal' ? 'block' : 'none';
+            document.getElementById('password').style.display = section === 'password' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <div class="profile">
+            <img src="assets/img/man1.jpeg" alt="User" class="profile-img" />
+            <h2 class="name">محمد عبد الله</h2>
+            <p class="role">أمين صندوق</p>
+        </div>
+
+        <ul class="menu">
+            <li class="active" onclick="showSection('personal'); this.classList.add('active'); this.nextElementSibling.classList.remove('active');">المعلومات الشخصية</li>
+            <li onclick="showSection('password'); this.classList.add('active'); this.previousElementSibling.classList.remove('active');">تغيير كلمة المرور</li>
+            <li onclick="location.href='index.html'">تسجيل الخروج</li>
+        </ul>
+    </aside>
+
+    <main class="content">
+
+        <!-- قسم المعلومات الشخصية -->
+        <section id="personal" style="display:block;">
+            <h1>المعلومات الشخصية</h1>
+            <form class="form">
+                <label>الاسم الكامل
+                    <input type="text" id="full_name" />
+                </label>
+
+                <label>البريد الإلكتروني
+                    <input type="email" id="email" />
+                </label>
+
+                <label>رقم الهاتف
+                    <input type="text" id="phone" />
+                </label>
+
+                <label>تاريخ الميلاد
+                    <input type="date" id="date_of_birth" />
+                </label>
+
+                <label>المدينة
+                    <input type="text" id="city" />
+                </label>
+
+                <label>الشارع
+                    <input type="text" id="street" />
+                </label>
+
+                <label>رقم الهوية
+                    <input type="text" id="visa_number" />
+                </label>
+
+                <label>تاريخ إنشاء الحساب
+                    <input type="text" id="created_at" readonly />
+                </label>
+
+                <div class="buttons">
+                    <button type="reset" class="discard">إلغاء التغييرات</button>
+                    <button type="submit" class="save">حفظ التغييرات</button>
+                </div>
+            </form>
+
+        </section>
+
+        <!-- قسم كلمة المرور -->
+        <section id="password" style="display:none;">
+            <h1>تغيير كلمة المرور</h1>
+
+            <form class="form">
+                <label>كلمة المرور الحالية
+                    <input type="password" placeholder="********" />
+                </label>
+
+                <label>كلمة المرور الجديدة
+                    <input type="password" placeholder="********" />
+                </label>
+
+                <label>تأكيد كلمة المرور
+                    <input type="password" placeholder="********" />
+                </label>
+
+                <div class="buttons">
+                    <button type="reset" class="discard">إلغاء</button>
+                    <button type="submit" class="save">حفظ التغييرات</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+</div>
+
+<script src="js/settings_user.js"></script>
+
+</body>
+</html>

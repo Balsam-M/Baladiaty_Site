@@ -1,0 +1,249 @@
+/* ================== Body ================== */
+body {
+    background: #E5E1DA;
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================== Sidebar ================== */
+.sidebar {
+    width: 250px;
+    background: #B3C8CF;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-top: 20px;
+    color: black;
+}
+
+.sidebar h4 {
+    font-weight: bold;
+}
+
+.sidebar .nav-link {
+    color: black;
+    margin: 8px 0;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: block;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background: #b9a292;
+    color: white;
+}
+
+/* ================== Main Content ================== */
+.content {
+    margin-right: 260px;
+    padding: 20px;
+}
+
+/* ================== Topbar ================== */
+.topbar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    background: #B3C8CF;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.topbar input[type="text"] {
+    width: 40%;
+    max-width: 300px;
+    height: 35px;
+    font-size: 14px;
+    padding: 4px 10px;
+}
+
+.admin-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #E5E1DA;
+}
+
+/* ================== Dashboard Cards ================== */
+.card-box {
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.card-blue { background-color: #2f4156; color: white; }
+.card-green { background-color: #ac6532; color: white; }
+.card-yellow { background-color: #b9a292; color: white; }
+.card-turquoise { background-color: #567c8d; color: white; }
+
+.card-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-title {
+    font-size: 1rem;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: white;
+}
+
+/* ================== Charts ================== */
+.chart-card {
+    height: 220px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.chart-card h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2f4156;
+    text-align: center;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 180px;
+    width: 100%;
+}
+
+/* ================== Latest Ads Table ================== */
+.table-wide {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Header */
+.table-wide thead th {
+    background-color: #B3C8CF;
+    color: white;
+    font-weight: bold;
+    text-align: center !important;
+    vertical-align: middle;
+    padding: 14px 15px;
+    border: none;
+}
+
+/* Body rows */
+.table-wide tbody tr {
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.table-wide tbody tr:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+/* Cells */
+.table-wide td {
+    text-align: center !important;
+    vertical-align: middle;
+    padding: 13px 15px;
+    border: none;
+}
+
+/* ================== Cards ================== */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: #567c8d;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* ================== Dashboard Fix ================== */
+#dashboard .card-body {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* ================== Pages ================== */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* ================== Settings Page ================== */
+.settings-container {
+    display: flex;
+    gap: 20px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.settings-sidebar {
+    width: 240px;
+    text-align: center;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 12px;
+}
+
+.settings-sidebar .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-option {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background: #eee;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-option.active,
+.btn-option:hover {
+    background: #b9a292;
+    color: white;
+}
+
+.settings-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.settings-content input {
+    height: 40px;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>إنشاء حساب</title>
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="modal">
+    <!-- الفيديو -->
+    <div class="video-side">
+        <video autoplay muted loop>
+            <source src="assets/mp4/signup_V.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay">
+            <div class="text-top">
+                <h2>مرحبًا بك</h2>
+                <p>ابدأ رحلتك معنا وسجّل الآن لتكون جزءًا من مجتمعنا.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفورم -->
+    <div class="form-side">
+        <h3>إنشاء حساب</h3>
+
+        <form id="signupForm">
+            <input type="text" name="id" placeholder="رقم الهوية" autocomplete="off" required>
+
+            <input type="text" name="first_name" placeholder="الاسم الأول" autocomplete="off" required>
+            <input type="text" name="last_name" placeholder="اسم العائلة" autocomplete="off" required>
+
+            <input type="email" name="email" placeholder="البريد الإلكتروني" autocomplete="off" required>
+            <input type="text" name="phone" placeholder="رقم الهاتف" autocomplete="off" required>
+
+            <input type="date" name="date_of_birth" autocomplete="off" required>
+
+            <input type="text" name="city" placeholder="المدينة" autocomplete="off" required>
+            <input type="text" name="street" placeholder="اسم الشارع" autocomplete="off" required>
+            <input type="text" name="visa_number" placeholder="رقم الفيزا" autocomplete="off" required>
+
+            <div class="password-wrapper">
+                <input type="password" name="password" placeholder="أدخل كلمة المرور" autocomplete="new-password" id="password" required>
+
+                <span class="toggle-password">
+                    <!-- العين المفتوحة -->
+                    <svg class="eye-icon open" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5
+                                 c4.477 0 8.268 2.943 9.542 7
+                                 -1.274 4.057-5.065 7-9.542 7
+                                 -4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+
+                    <!-- العين المغلقة -->
+                    <svg class="eye-icon closed" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                         style="display:none;">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M6.35 6.35l11.3 11.3"/>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                </span>
+            </div>
+
+            <button type="submit">إنشاء الحساب</button>
+        </form>
+
+        <div id="message" style="text-align:center;margin-top:10px;"></div>
+
+        <p>هل لديك حساب؟
+            <a href="index.html?openLogin=true">تسجيل الدخول</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    // إظهار/إخفاء كلمة المرور
+    const togglePassword = document.querySelector('.toggle-password');
+    const password = document.getElementById('password');
+    const eyeOpen = document.querySelector('.eye-icon.open');
+    const eyeClosed = document.querySelector('.eye-icon.closed');
+
+    togglePassword.addEventListener('click', () => {
+        if (password.type === "password") {
+            password.type = "text";
+            eyeOpen.style.display = "none";
+            eyeClosed.style.display = "block";
+        } else {
+            password.type = "password";
+            eyeOpen.style.display = "block";
+            eyeClosed.style.display = "none";
+        }
+    });
+
+    // إرسال الفورم
+    const form = document.getElementById('signupForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch('adminphp/signup_process.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                messageDiv.style.color = data.success ? 'green' : 'red';
+                messageDiv.innerHTML = data.message;
+
+                if (data.success) {
+                    form.reset();
+                }
+            })
+            .catch(err => {
+                messageDiv.style.color = 'red';
+                messageDiv.innerHTML = 'حدث خطأ غير متوقع';
+            });
+    });
+</script>
+
+</body>
+</html>

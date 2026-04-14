@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #001220, #001f3f, #003566);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* الخلفية الداكنة خلف المودال */
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(237, 233, 227, 0.7);
+    z-index: 1;
+}
+
+/* المودال */
+.modal {
+    position: relative;
+    z-index: 2;
+    width: 75%;
+    max-width: 1400px;
+    max-height: 800px;
+    display: flex;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    background: #fff;
+    animation: popup 0.9s ease forwards;
+}
+
+@keyframes popup {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* الجزء الأيسر: الفيديو */
+.video-side {
+    flex: 1.6;
+    position: relative;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-top {
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    animation: slideDown 1.2s ease;
+}
+
+.text-top h2 {
+    font-size: 34px;
+    margin-bottom: 5px;
+}
+
+.text-top p {
+    font-size: 16px;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* الجزء الأيمن: الفورم */
+.form-side {
+    flex: 1;
+    background:#DDDDDD;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: slideInRight 1.2s ease;
+    color: #fff;
+    border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(80px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+h3 {
+    color: #001d3d;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ظهور تدريجي لكل input */
+form input:nth-child(1) { animation: fadeUp 0.6s ease forwards 0.2s; opacity: 0; }
+form input:nth-child(2) { animation: fadeUp 0.6s ease forwards 0.4s; opacity: 0; }
+form input:nth-child(3) { animation: fadeUp 0.6s ease forwards 0.6s; opacity: 0; }
+form input:nth-child(4) { animation: fadeUp 0.6s ease forwards 0.8s; opacity: 0; }
+form input:nth-child(5) { animation: fadeUp 0.6s ease forwards 1s; opacity: 0; }
+form input:nth-child(6) { animation: fadeUp 0.6s ease forwards 1.2s; opacity: 0; }
+form button           { animation: fadeUp 0.6s ease forwards 1.4s; opacity: 0; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+input {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: #003566;
+    box-shadow: 0 0 10px rgba(0,53,102,0.4);
+    transform: scale(1.02);
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #003566, #001d3d);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #001d3d, #000814);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-link a {
+    color: #003566;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* تعديل تنسيق فقرة تسجيل الدخول */
+.form-side p {
+    text-align: center;
+    margin-top: 20px;
+    color: #001d3d;
+    font-size: 15px;
+}
+
+.form-side p a {
+    color: #003566;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.form-side p a:hover {
+    text-decoration: underline;
+}
+
+
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-left: 40px; /* مساحة للأيقونة على اليسار */
+    padding-right: 12px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    height: 45px;
+    outline: none;
+}
+
+.toggle-password {
+    position: absolute;
+    left: 12px; /* لأن RTL */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+    color: #003566;
+    transition: 0.3s;
+}
+
+.eye-icon:hover {
+    color: #001d3d;
+}
